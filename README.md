@@ -2,6 +2,11 @@
 [![npm version](https://img.shields.io/npm/v/lrz.svg)](https://www.npmjs.com/package/lrz)
 [![npm](https://img.shields.io/npm/l/express.svg)]()
 
+# 🚨重要!!
+
+很抱歉，这个项目已不再维护了，可能很长一段时间都不会更新了。
+如果真的需要，请使用之前请一定留意 [Issues](https://github.com/think2011/localResizeIMG/issues?q=is%3Aissue+is%3Aopen+label%3Abug) 里已知的问题
+
 # 演示一下
 
 ![](http://think2011.github.io/localResizeIMG/test/demo.gif)
@@ -26,6 +31,8 @@
 2. 按需加载（会根据对应设备自动异步载入JS文件，节省不必要带宽）
 
 3. 原生JS编写，不依赖例如`jquery`等第三方库，支持AMD or CMD规范。
+
+> 尽管如此，在某些 `Android` 下依然有莫名其妙的问题，在您使用前，请一定大致浏览下 [issues](https://github.com/think2011/localResizeIMG/issues)
 
 # 如何获取
 
@@ -52,9 +59,10 @@
 接着通过change事件可以得到用户选择的图片
 ```js
 document.querySelector('#file').addEventListener('change', function () {
- lrz(this.files[0])
+	lrz(this.files[0])
         .then(function (rst) {
             // 处理成功会执行
+            console.log(rst);
         })
         .catch(function (err) {
             // 处理失败会执行
@@ -81,29 +89,6 @@ lrz('./xxx/xx/x.png')
             // 不管是成功失败，都会执行
         });
 ```
-
-### JQuery 处理
-例子中给的是原生ajax的方式，下面是JQuery上传的方式
-
-注意！！：使用 `zepto` 的朋友请用 `原生 或 jquery代替`，在某些 `android` 设备下用 `zepto` 会出现不发送 `Content-Type` 导致无法上传的BUG。 感谢 @Poised_flw
-
-```js
-// 额外添加参数
-rst.formData.append('fileLen', rst.fileLen);
- 
-$.ajax({
-    url: 'http://koa-upload.coding.io', // 这个地址做了跨域处理，可以用于实际调试
-    data: rst.formData,
-    processData: false,
-    contentType: false,
-    type: 'POST',
-    success: function (data) {
-        alert(JSON.stringify(data));
-    }
-});
-```
-
-
 
 # 后端处理
 
@@ -149,7 +134,7 @@ IE10以上及大部分非IE浏览器（chrome、微信什么的）
 
 # 开发
 
-[想要参与 or 自己定制 or 了解源码请点击这里，逻辑和说明](https://github.com/think2011/localResizeIMG/wiki/%E5%BC%80%E5%8F%91)
+[想要参与 or 自己定制 or 了解源码请点击这里，逻辑和说明](https://github.com/think2011/localResizeIMG/wiki/3.-%E6%BA%90%E7%A0%81%E9%80%BB%E8%BE%91)
 
 # 感谢
 
